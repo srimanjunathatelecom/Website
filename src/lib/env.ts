@@ -49,9 +49,10 @@ function resolveSiteUrl(): string {
   // clients and browsers will flag or rewrite them. Localhost is exempt:
   // `next build` and `next start` both run with NODE_ENV=production, so
   // requiring https outright would make it impossible to test a production
-  // build locally.
+  // build locally. IP addresses are also exempt for initial deployment testing.
   const isLocal = ["localhost", "127.0.0.1", "[::1]"].includes(parsed.hostname);
-  if (isProd && !isLocal && parsed.protocol !== "https:") {
+  const isIP = /^[\d\.:]+$/.test(parsed.hostname);
+  if (isProd && !isLocal && !isIP && parsed.protocol !== "https:") {
     throw new Error(`SITE_URL must use https in production (got "${raw}").`);
   }
 
@@ -227,7 +228,7 @@ export function checkEnv(isProduction = process.env.NODE_ENV === "production"): 
             "Points at localhost in production. Every link in every order email would send the " +
             "customer to their own machine.",
         });
-      } else if (!v.startsWith("https://")) {
+      } else if (!v.startsWith("https://") && !/^http:\/\/[\d\.:]+$/.test(v)) {
         issues.push({
           variable: "SITE_URL",
           level: "error",
