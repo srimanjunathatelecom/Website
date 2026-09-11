@@ -1,0 +1,16 @@
+# Railway deployment configuration.
+#
+# Railway auto-detects this file. It builds the repo's Dockerfile (which also
+# runs database migrations on every container start — idempotent, resumable)
+# and gates traffic on /api/health, which verifies required env vars and a
+# live database connection before the instance is considered healthy.
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/api/health"
+healthcheckTimeout = 120
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

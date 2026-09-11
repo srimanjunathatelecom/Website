@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" width="240" height="120" role="img" aria-label="TECNO">
+  <rect width="240" height="120" fill="none"/>
+  <rect x="34" y="30" width="172" height="60" rx="8" fill="#1a5fd0"/>
+  <text x="120" y="60" fill="#ffffff"
+        font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif"
+        font-size="38" font-weight="700" letter-spacing="0.5"
+        text-anchor="middle" dominant-baseline="central">TECNO</text>
+</svg>

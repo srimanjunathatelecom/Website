@@ -1,0 +1,84 @@
+# Runs on every push and pull request: types, lint, production build.
+# No database or secrets are needed — every page renders on demand, so the
+# build never depends on a reachable database (prerender-time lookups fail
+# soft by design). SITE_URL, however, is hard-required by src/lib/env.ts in
+# production builds — rightly so on a real deploy — so CI supplies a
+# localhost placeholder. The placeholder DATABASE_URL exists for the same
+# reason: it is never connected to, only parsed.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+          SITE_URL: "http://localhost:3000"
+          DATABASE_URL: "postgresql://ci:ci@127.0.0.1:5432/ci"
+
+  e2e:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: sms
+          POSTGRES_PASSWORD: sms
+          POSTGRES_DB: sms
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U sms"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      DATABASE_URL: "postgresql://sms:sms@127.0.0.1:5432/sms"
+      SITE_URL: "http://localhost:3000"
+      BASE: "http://localhost:3000"
+      SEED_KEY: "ci-seed-key"
+      INITIAL_ADMIN_EMAIL: "admin@smsstores.local"
+      INITIAL_ADMIN_PASSWORD: "AdminLocal#2026"
+      # Test-mode stand-ins: webhooks are signed locally, no gateway is contacted.
+      RAZORPAY_KEY_ID: "rzp_test_qa"
+      RAZORPAY_KEY_SECRET: "qasecret"
+      RAZORPAY_WEBHOOK_SECRET: "localqawebhooksecret"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Bootstrap schema and run migrations
+        run: node scripts/db-bootstrap.mjs
+      - run: npm run build
+      - name: Start server
+        run: |
+          nohup npm run start > server.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:3000/api/products?limit=1 > /dev/null && break
+            sleep 2
+          done
+      - name: Seed demo data
+        run: curl -sf "http://localhost:3000/api/seed?key=ci-seed-key&demo=1" > /dev/null
+      - name: API test suites
+        run: npm test
+      - name: Server log on failure
+        if: failure()
+        run: tail -100 server.log
