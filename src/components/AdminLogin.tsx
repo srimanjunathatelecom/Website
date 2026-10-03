@@ -151,7 +151,7 @@ export default function AdminLogin() {
             </div>
 
             <p className="font-mono-adm text-[11px] tracking-wider text-[var(--adm-paper)]/40">
-              © {new Date().getFullYear()} Smart Mobile Stores · GSTIN 29ARHPP2476R1ZR
+              © {new Date().getFullYear()} Smart Mobile Stores
             </p>
           </div>
         </aside>

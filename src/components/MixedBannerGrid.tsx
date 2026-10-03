@@ -25,11 +25,11 @@ export default function MixedBannerGrid({ banners }: { banners: GridBannerData[]
   return (
     <section className="shell band-tight">
       <div className={`grid grid-cols-1 gap-3 ${smalls.length > 0 ? "sm:grid-cols-3" : ""}`}>
-        <Tile banner={large} className={smalls.length > 0 ? "sm:col-span-2 h-56 sm:h-full" : "h-56 sm:h-72"} />
+        <Tile banner={large} className={smalls.length > 0 ? "sm:col-span-2 h-40 sm:h-full" : "h-40 sm:h-56"} />
         {smalls.length > 0 && (
           <div className="grid grid-cols-1 gap-3 sm:grid-rows-2">
             {smalls.map((b) => (
-              <Tile key={b.id} banner={b} className="h-40 sm:h-full" />
+              <Tile key={b.id} banner={b} className="h-32 sm:h-full" />
             ))}
           </div>
         )}

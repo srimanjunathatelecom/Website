@@ -7,13 +7,13 @@ import pg from "pg";
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL });
 await c.connect();
 await c.query(`INSERT INTO store_settings (id, brand_name, legal_name, support_email, support_phone, whatsapp_number)
-  VALUES (1,'SMS Stores','Smart Mobile Stores','care@example.com','+919000000000','919000000000')
+  VALUES (1,'SMS Stores','Smart Mobile Stores','care@example.com','+918892536695','+918892536695')
   ON CONFLICT (id) DO NOTHING`);
 await c.query(`INSERT INTO outlets (name, address_line, contact, email, is_main, hours_open, hours_close)
-  SELECT 'K R Puram','Old Madras Road, Bengaluru','+919000000001','krpuram@example.com',true,'10:00 AM','9:00 PM'
+  SELECT 'K R Puram','Old Madras Road, Bengaluru','+917996663356','krpuram@example.com',true,'10:00 AM','9:00 PM'
   WHERE NOT EXISTS (SELECT 1 FROM outlets)`);
 await c.query(`INSERT INTO outlets (name, address_line, contact, email, is_main, hours_open, hours_close)
-  SELECT 'Bidarahalli','Bidarahalli, Bengaluru','+919000000002','bidarahalli@example.com',false,'10:00 AM','9:00 PM'
+  SELECT 'Bidarahalli','Bidarahalli, Bengaluru','+918892536695','bidarahalli@example.com',false,'10:00 AM','9:00 PM'
   WHERE (SELECT count(*) FROM outlets) < 2`);
 await c.query(`INSERT INTO categories (name, slug) SELECT * FROM (VALUES
   ('Mobiles','mobiles'),('Accessories','accessories'),('Laptops','laptops'),('Audio','audio'))

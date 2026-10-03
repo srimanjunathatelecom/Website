@@ -121,7 +121,7 @@ export default function Header({ brand, categories, whatsapp, logoUrl, homeConfi
     const cls = NAV_TONES[i % NAV_TONES.length];
     return cat ? { ...n, label: cat.name, cls } : { ...n, cls };
   });
-  const marqueeItems = [...homeConfig.marqueeItems, `Call ${whatsapp || "7996663356"}`];
+  const marqueeItems = [...homeConfig.marqueeItems, `Call ${whatsapp || "918892536695"}`];
 
   return (
     <header className="sticky top-0 z-40">
@@ -178,7 +178,7 @@ export default function Header({ brand, categories, whatsapp, logoUrl, homeConfi
             </span>
             <span className="ml-2 hidden border-l border-slate-200 pl-3 leading-tight lg:block">
               <span className="block text-[11px] font-bold uppercase tracking-[0.08em] text-slate-400">{homeConfig.headerDeliveryLabel}</span>
-              <span className="block bg-gradient-to-r from-blue-800 to-indigo-700 bg-clip-text text-[13.5px] font-black tracking-tight text-transparent">{whatsapp || "7996663356"}</span>
+              <span className="block bg-gradient-to-r from-blue-800 to-indigo-700 bg-clip-text text-[13.5px] font-black tracking-tight text-transparent">{whatsapp || "918892536695"}</span>
             </span>
           </Link>
 

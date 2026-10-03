@@ -589,11 +589,11 @@ p, span, li, td, label {
    picked its own py-4 / py-5 / py-6 / py-8, which is what produced the
    uneven 100px-then-40px gaps down the page. */
 .band       { padding-block: 1.75rem; }
-.band-tight { padding-block: 1rem; }
+.band-tight { padding-block: 0.5rem; }
 .band-lg    { padding-block: 2.75rem; }
 @media (min-width: 640px) {
   .band       { padding-block: 2.5rem; }
-  .band-tight { padding-block: 1.25rem; }
+  .band-tight { padding-block: 0.75rem; }
   .band-lg    { padding-block: 4rem; }
 }
 

@@ -76,7 +76,7 @@ export default function ProductLedBanner({ banner }: { banner: ProductBannerData
         href={`/products/${p.slug}`}
         className="group grid grid-cols-1 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-800 via-blue-700 to-indigo-800 shadow-xl ring-1 ring-blue-900/40 transition hover:-translate-y-0.5 hover:shadow-2xl sm:grid-cols-2"
       >
-        <div className="flex flex-col justify-center gap-3 p-8 text-white sm:p-12">
+        <div className="flex flex-col justify-center gap-2 p-6 text-white sm:p-10">
           <p className="text-[11px] font-black uppercase tracking-[0.25em] text-blue-200">{p.brand}</p>
           <h2 className="text-2xl font-black leading-tight tracking-tight sm:text-4xl">{banner.title || p.name}</h2>
           {banner.subtitle && <p className="max-w-sm text-sm text-blue-100">{banner.subtitle}</p>}
@@ -93,7 +93,7 @@ export default function ProductLedBanner({ banner }: { banner: ProductBannerData
             {banner.ctaLabel || "Shop Now"} <span className="nudge-x">→</span>
           </span>
         </div>
-        <div className="relative min-h-[220px] bg-white/5 sm:min-h-[340px]">
+        <div className="relative min-h-[160px] bg-white/5 sm:min-h-[240px]">
           <SafeImage
             src={p.primaryImage}
             alt={p.name}

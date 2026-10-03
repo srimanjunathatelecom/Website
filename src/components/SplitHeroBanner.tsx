@@ -56,7 +56,7 @@ export default function SplitHeroBanner({ banner }: { banner: SplitBannerData })
           imageRight ? "" : "sm:[direction:rtl]"
         }`}
       >
-        <div className={`flex flex-col justify-center gap-4 p-8 text-white sm:p-12 ${imageRight ? "" : "sm:[direction:ltr]"}`}>
+        <div className={`flex flex-col justify-center gap-3 p-6 text-white sm:p-10 ${imageRight ? "" : "sm:[direction:ltr]"}`}>
           <h2 className="text-2xl font-black leading-tight tracking-tight sm:text-4xl">{banner.title}</h2>
           {banner.subtitle && <p className="max-w-sm text-sm text-slate-300 sm:text-base">{banner.subtitle}</p>}
           <Link
@@ -66,7 +66,7 @@ export default function SplitHeroBanner({ banner }: { banner: SplitBannerData })
             {banner.ctaLabel || "Shop Now"} <span className="nudge-x">→</span>
           </Link>
         </div>
-        <div className={`relative min-h-[220px] sm:min-h-[340px] ${imageRight ? "" : "sm:[direction:ltr]"}`}>
+        <div className={`relative min-h-[160px] sm:min-h-[240px] ${imageRight ? "" : "sm:[direction:ltr]"}`}>
           <SafeImage src={banner.image} alt={banner.title} className="object-cover" />
         </div>
       </div>

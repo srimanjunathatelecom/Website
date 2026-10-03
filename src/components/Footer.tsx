@@ -87,18 +87,7 @@ export default function Footer({
           </div>
           {s?.tagline && <p className="mt-3 text-sm leading-relaxed text-slate-400">{s.tagline}</p>}
 
-          {/* Registered-business details — a clearly labelled two-line
-              block instead of a run of plain text, so GSTIN/PAN read as
-              legal/compliance info rather than clutter. */}
-          {(s?.legalName || s?.gstin || s?.pan) && (
-            <div className="mt-4 space-y-0.5 border-l-2 border-white/10 pl-3 text-[11.5px] text-slate-500">
-              {s?.legalName && <p>{s.legalName}</p>}
-              <p className="flex flex-wrap gap-x-3">
-                {s?.gstin && <span>GSTIN: <span className="font-medium text-slate-300">{s.gstin}</span></span>}
-                {s?.pan && <span>PAN: <span className="font-medium text-slate-300">{s.pan}</span></span>}
-              </p>
-            </div>
-          )}
+
 
           {/* Direct contact — real icons + tel:/mailto:/wa.me links instead
               of static text, so these are actually clickable on mobile. */}

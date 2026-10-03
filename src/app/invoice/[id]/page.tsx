@@ -105,8 +105,6 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
               {outlet && <p className="mt-1 max-w-xs text-xs text-slate-500">{outlet.name}<br />{outlet.addressLine}<br />Phone: {outlet.contact}</p>}
             </div>
             <div className="text-right text-xs text-slate-600 dark:text-slate-300 print:text-black">
-              <p>GSTIN: {settings?.gstin}</p>
-              <p>PAN: {settings?.pan}</p>
               <p>State: {settings?.state} ({settings?.stateCode})</p>
               <p>Place of Supply: {settings?.placeOfSupply}</p>
             </div>

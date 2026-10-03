@@ -102,7 +102,7 @@ export async function GET(req: Request) {
         name: "Smart Mobile Stores — K R Puram (Main)",
         addressLine:
           "37/A, A, Seegehalli Main Road, Virgonagar Post, K R Puram Hobli, Maria Villa, Bengaluru, Karnataka, 560049",
-        contact: "7996663356",
+        contact: "917996663356",
         email: "smartmobilestores2022@gmail.com",
         mapsUrl: "https://maps.app.goo.gl/CPKRdQf7pxMqVLaN7",
         photo: photoSvg("Main Outlet — K R Puram"),
@@ -114,7 +114,7 @@ export async function GET(req: Request) {
         name: "SMS Stores — Bidarahalli",
         addressLine:
           "Building No. 3, SY No. 75/1, Punyabhoomi Layout, Bidarahalli, Bengaluru, Karnataka, 560049",
-        contact: "8892536695",
+        contact: "918892536695",
         email: "appusathi1996@gmail.com",
         mapsUrl: "https://maps.app.goo.gl/XZDncP624tC1wFW98",
         photo: photoSvg("Bidarahalli Outlet"),

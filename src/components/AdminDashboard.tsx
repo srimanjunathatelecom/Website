@@ -232,7 +232,6 @@ export default function AdminDashboard({ admin, onError }: { admin: any; onError
           <footer className="border-t border-[var(--adm-line)] px-4 py-4 sm:px-8">
             <div className="flex flex-wrap items-center justify-between gap-2 font-mono-adm text-[10px] uppercase tracking-wider text-[var(--adm-muted)]">
               <span>Smart Mobile Stores - Console v3</span>
-              <span>GSTIN 29ARHPP2476R1ZR - PAN ARHPP2476R</span>
             </div>
           </footer>
         </div>
