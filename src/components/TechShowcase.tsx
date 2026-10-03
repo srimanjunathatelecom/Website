@@ -172,7 +172,7 @@ export default function TechShowcase({ config }: { config: HomeShowcaseConfig })
             <h2 className="tsx-title">{config.title}</h2>
             {config.subtitle && <p className="mt-2 text-[14px] text-slate-400 sm:text-[15px]">{config.subtitle}</p>}
 
-            <div className="relative mt-8 min-h-[240px] sm:min-h-[220px]">
+            <div className="relative mt-6 min-h-[180px] sm:min-h-[160px]">
               {chapters.map((c, i) => (
                 <div
                   key={i}

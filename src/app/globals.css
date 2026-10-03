@@ -1475,10 +1475,10 @@ p, span, li, td, label {
    Tech showcase — scroll-pinned cinematic section (TechShowcase.tsx)
    ========================================================================== */
 
-/* Tall wrapper gives the sticky scene its scroll runway (~3 viewports). */
+/* Tall wrapper gives the sticky scene its scroll runway (~2 viewports). */
 .tsx-wrap {
   position: relative;
-  height: 320vh;
+  height: 200vh;
   background: #020617;
 }
 
